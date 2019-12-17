@@ -226,17 +226,23 @@ def fasta2matrix(k,my_sequences):
 ​
     #append total list into dataframe
     test_df=pd.DataFrame(vector_list)
+    # FIXME: Ah, now I see that "df" is "data frame."  But why is it "test"?
     #column headers are the corresponding k_list
+    # FIXME: Try to avoid referring to variables by name in comments.
     test_df.columns=kmer_list
     return(test_df)
 ​
 ##############################################################################
 # MAIN
 ##############################################################################
-​
+
+​# FIXME: You should update your usage statement.  None of those
+# options are actually supported by this script.  Instead, just make
+# the usage statement say what the program does.
+
 # Define the command line usage.
 usage = """Usage: fasta2matrix [options] <k> <fasta file>
-​
+
   Options:
 ​
     -upto       Use all values from 1 up to the specified k.
@@ -249,11 +255,20 @@ usage = """Usage: fasta2matrix [options] <k> <fasta file>
 ​
     -alphabet <string> Set the alphabet arbitrarily.
 """
+
 ​
-#Define variables and default options
+# FIXME: Your main subroutine should be inside
+# if __name__ == '__main__':
+
+# Define variables and default options
+# FIXME: Where is this pDups object defined?  Seems like you
+# have left off the command line handling in your main procedure.
+# FIXME: It's weird to alternate between camelCase and underscore
+# naming in one script.
 k_val=pDups.k_val
 sequences=pDups.seq_list
 upto = k_val
+# FIXME: Might be good to change all my 0/1 variables to Booleans.
 revcomp = 1
 normalize_method = "unitsphere"
 alphabet = "ACGT"
@@ -293,11 +308,18 @@ if (revcomp == 1):
   sys.stderr.write("Reduced to %d kmers.\n" % len(kmer_list))
 ​
 #Generate vector of specified k and list of sequences
+# FIXME: What does "test_df" mean?  Use a better name.
 test_df=fasta2matrix(k_val,sequences)
+
+# FIXME: You should print the matrix here.  Otherwise, the main
+# function doesn't actually DO anything.
 ​
-​
+# FIXME: You can delete the lines below.​
 # Local variables:
 # mode: python
 # py-indent-offset: 2
 # End:
+
+# FIXME: What does this "Collapse" line do?
 Collapse
+
